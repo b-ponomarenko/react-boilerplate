@@ -1,11 +1,14 @@
 import React from 'react';
-import pt from 'prop-types';
-import styles from './App.css';
+import { Route } from 'react-router-dom';
+import Foo from './Foo.jsx';
+import { hot } from 'react-hot-loader';
 
 const App = props => (
-    <div></div>
-)
+  <div>
+    <Route path='/' component={Foo}/>
+  </div>
+);
 
-App.propTypes = {}
+App.propTypes = {};
 
-export default App;
+export default hot(module)(App);
