@@ -1,13 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
+const extensions = require('../consts/media');
+const colors = require('../consts/colors');
+const postCssCustomProperties = require('postcss-custom-properties')();
+
+postCssCustomProperties.setVariables({ ...colors });
 
 module.exports = {
   mode: 'development',
-  context: __dirname,
   entry: [
     'webpack-hot-middleware/client',
     'react-hot-loader/patch',
-    path.resolve(__dirname, '../../src')
+    path.resolve(__dirname, '../../src/index')
   ],
   output: {
     filename: 'bundle.js',
@@ -27,7 +31,8 @@ module.exports = {
           {
             loader: 'style-loader',
             options: {
-              sourceMap: true
+              sourceMap: true,
+              hmr: false
             }
           },
           {
@@ -42,7 +47,10 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: [
-
+                require('postcss-nested'),
+                require('postcss-hexrgba'),
+                require('postcss-custom-media')({ extensions }),
+                postCssCustomProperties
               ]
             }
           }

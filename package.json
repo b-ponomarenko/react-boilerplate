@@ -4,7 +4,7 @@
   "description": "One more boilerplate for react app",
   "main": "index.js",
   "scripts": {
-    "start": "node webpack/index.js",
+    "start": "node --inspect webpack/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 3001",
     "build-storybook": "build-storybook"
@@ -31,6 +31,7 @@
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.11.1",
+    "file-loader": "^2.0.0",
     "ignore-styles": "^5.0.1",
     "jest": "^23.6.0",
     "postcss-custom-media": "^6.0.0",
@@ -45,16 +46,19 @@
     "webpack-hot-middleware": "^2.24.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.3",
     "express": "^4.16.3",
     "morgan": "^1.9.1",
+    "normalize.css": "^8.0.0",
     "puppeteer": "^1.8.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
     "react-hot-loader": "^4.3.8",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   }
 }

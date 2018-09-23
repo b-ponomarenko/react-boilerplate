@@ -1,12 +1,26 @@
 import React from 'react';
 import styles from './Foo.css';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
-console.log(styles);
-
-const Foo = props => (
-    <div className={styles.foo}>meow</div>
+const Foo = ({ data }) => (
+  <div className={styles.foo}>
+    <div className={styles.bar33}>
+      {data.map(({ title }) => <span key={title}>{title}</span>)}
+    </div>
+  </div>
 );
 
 Foo.propTypes = {};
 
-export default Foo;
+Foo.actions = [
+  () =>
+      dispatch =>
+        axios.get('http://jsonplaceholder.typicode.com/db')
+          .then(({ data }) => dispatch({
+            type: 'SERVER_DATA_LOADED',
+            payload: data.posts
+          }))
+];
+
+export default connect(state => ({ data: state.data }))(Foo);

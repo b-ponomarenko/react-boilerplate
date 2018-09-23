@@ -5,6 +5,9 @@ import store from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
+import './index.css';
+import 'normalize.css';
+
 const Root = () => (
   <Provider store={store}>
     <BrowserRouter>

@@ -30,8 +30,6 @@ app.use(devMiddleware(compiler, {
 }));
 app.use(hotMiddleware(compiler));
 
-app.get('*', (req, res) => {
-  res.send(renderApp(req, res));
-});
+app.get('*', (req, res) => renderApp(req, res));
 
 app.listen(PORT, () => console.log(`🎉🎉🎉 App listening on port ${PORT}!`));
